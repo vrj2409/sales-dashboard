@@ -1,0 +1,12 @@
+node_modules
+.vscode
+*.log
+.env
+.env.local
+src
+update_data.py
+serve.py
+build.py
+streamlit_app.py
+requirements.txt
+Reduced_10000_Diverse.xlsx

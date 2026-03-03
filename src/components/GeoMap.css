@@ -1,0 +1,228 @@
+.geo-map-container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.geo-map-container h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin-bottom: 20px;
+}
+
+.geo-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.geo-table thead th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px;
+  background: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.geo-table thead th:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.geo-table thead th:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.geo-table tbody tr {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.geo-table tbody tr:hover {
+  background: #f8fafc;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.geo-table tbody td {
+  padding: 16px 12px;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.geo-table tbody tr td:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.geo-table tbody tr td:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.country-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.country-flag {
+  font-size: 20px;
+}
+
+.country-id {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-left: 4px;
+}
+
+.sales-bar-cell {
+  position: relative;
+  min-width: 200px;
+  padding-left: 12px !important;
+}
+
+.sales-bar-bg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 8px;
+  background: linear-gradient(90deg, #6366f1 0%, #4f46e5 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  max-width: calc(100% - 120px);
+}
+
+.sales-value {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  padding-left: 4px;
+  display: inline-block;
+  background: white;
+  padding-right: 4px;
+}
+
+.variance-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.variance-badge.positive {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.variance-badge.negative {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.expand-icon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.expand-icon.expanded {
+  transform: rotate(90deg);
+}
+
+.brand-breakdown {
+  margin-top: 12px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.brand-breakdown h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e1b4b;
+  margin-bottom: 12px;
+}
+
+.brand-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-name {
+  min-width: 120px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.brand-bar {
+  flex: 1;
+  height: 24px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+}
+
+.brand-bar-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+}
+
+.summary-donut {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+@media (max-width: 768px) {
+  .geo-map-container {
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .geo-table {
+    min-width: 600px;
+  }
+}
