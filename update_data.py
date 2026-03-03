@@ -90,6 +90,10 @@ print("Writing data.json...")
 with open('dist/data.json', 'w', encoding='utf-8') as f:
     json.dump(data_json, f, ensure_ascii=False)
 
+# Also write to public folder for Vercel
+with open('public/data.json', 'w', encoding='utf-8') as f:
+    json.dump(data_json, f, ensure_ascii=False)
+
 print("\n" + "="*60)
 print("Data updated successfully!")
 print("="*60)
