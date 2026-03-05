@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { startOfWeek, startOfMonth, subWeeks, subMonths, subYears, format } from 'date-fns';
+import { startOfWeek, startOfMonth, subWeeks, subMonths, subYears, addDays, addYears, format } from 'date-fns';
 import FilterDrawer from './FilterDrawer';
 import FilterChips from './FilterChips';
 import KPICards from './KPICards';
@@ -93,6 +93,57 @@ const Dashboard = ({ data, currentView, filters, setFilters, filterDrawerOpen, s
       return result;
     };
 
+    // Get weekly data for WoW sparkline
+    const getWeeklyData = () => {
+      const result = [];
+      for (let i = 6; i >= 0; i--) {
+        const weekStart = subWeeks(now, i);
+        const weekEnd = addDays(weekStart, 6);
+        
+        const weekData = filteredData.filter(d => 
+          d.date >= weekStart && d.date <= weekEnd
+        );
+        const sales = weekData.reduce((sum, row) => sum + row.sales, 0);
+        
+        result.push({ value: sales });
+      }
+      return result;
+    };
+
+    // Get monthly data for MoM sparkline
+    const getMonthlyData = () => {
+      const result = [];
+      for (let i = 6; i >= 0; i--) {
+        const monthStart = subMonths(now, i);
+        const monthEnd = addDays(monthStart, 30);
+        
+        const monthData = filteredData.filter(d => 
+          d.date >= monthStart && d.date <= monthEnd
+        );
+        const sales = monthData.reduce((sum, row) => sum + row.sales, 0);
+        
+        result.push({ value: sales });
+      }
+      return result;
+    };
+
+    // Get yearly data for YoY sparkline
+    const getYearlyData = () => {
+      const result = [];
+      for (let i = 6; i >= 0; i--) {
+        const yearStart = subYears(now, i);
+        const yearEnd = addYears(yearStart, 1);
+        
+        const yearData = filteredData.filter(d => 
+          d.date >= yearStart && d.date < yearEnd
+        );
+        const sales = yearData.reduce((sum, row) => sum + row.sales, 0);
+        
+        result.push({ value: sales });
+      }
+      return result;
+    };
+
     const last7Days = getLast7Days();
 
     return {
@@ -101,9 +152,9 @@ const Dashboard = ({ data, currentView, filters, setFilters, filterDrawerOpen, s
       transactions: last7Days.map(d => ({ value: d.transactions })),
       targetTransactions: last7Days.map(d => ({ value: d.targetTransactions })),
       variance: last7Days.map(d => ({ value: d.variance })),
-      wow: last7Days.map(d => ({ value: d.value })),
-      mom: last7Days.map(d => ({ value: d.value })),
-      yoy: last7Days.map(d => ({ value: d.value }))
+      wow: getWeeklyData(),
+      mom: getMonthlyData(),
+      yoy: getYearlyData()
     };
   }, [filteredData]);
 
