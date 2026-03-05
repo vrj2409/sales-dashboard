@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
+import AIInsights from './AIInsights';
 import './OverviewPage.css';
 
 const OverviewPage = ({ data }) => {
@@ -100,6 +101,9 @@ const OverviewPage = ({ data }) => {
 
   return (
     <div className="overview-page">
+      {/* AI Insights Section */}
+      <AIInsights data={data} />
+
       <div className="bento-grid">
         <div className="bento-item performance-score">
           <h3>Performance Score</h3>

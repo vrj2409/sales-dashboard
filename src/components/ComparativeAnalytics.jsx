@@ -239,20 +239,17 @@ const ComparativeAnalytics = ({ data }) => {
                     const cell = heatmapData.find(d => d.brand === brand && d.country === country);
                     const variance = cell ? cell.variance : null;
                     
-                    // Only show cells with variance >= -5% (yellow/green zones)
-                    const shouldShow = variance !== null && variance >= -5;
-                    
                     return (
                       <td 
                         key={country}
                         className="heatmap-cell"
                         style={{ 
-                          background: shouldShow ? getHeatmapColor(variance) : '#f8fafc',
-                          color: shouldShow && Math.abs(variance) > 5 ? 'white' : '#0f172a'
+                          background: variance !== null ? getHeatmapColor(variance) : '#f8fafc',
+                          color: variance !== null && Math.abs(variance) > 5 ? 'white' : '#0f172a'
                         }}
-                        title={shouldShow ? `${variance.toFixed(1)}%` : 'No data'}
+                        title={variance !== null ? `${variance.toFixed(1)}%` : 'No data'}
                       >
-                        {shouldShow ? `${variance.toFixed(0)}%` : '-'}
+                        {variance !== null ? `${variance.toFixed(0)}%` : '-'}
                       </td>
                     );
                   })}
