@@ -1,0 +1,264 @@
+.ai-insights-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  margin: 20px 0;
+}
+
+.ai-insights-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.ai-insights-header h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.ai-insights-header p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.insight-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.insight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.insight-card.expanded {
+  grid-column: 1 / -1;
+}
+
+.insight-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  cursor: pointer;
+  border-left: 4px solid var(--insight-color);
+}
+
+.insight-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.insight-title-section {
+  flex: 1;
+}
+
+.insight-title-section h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.insight-summary {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.expand-icon {
+  font-size: 24px;
+  color: var(--insight-color);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.insight-details {
+  padding: 0 20px 20px 20px;
+  border-top: 1px solid #e5e7eb;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.insight-details h4 {
+  font-size: 16px;
+  margin: 20px 0 12px 0;
+  color: #374151;
+  font-weight: 600;
+}
+
+.insight-analysis p {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.insight-stores {
+  margin-top: 20px;
+}
+
+.stores-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.store-item {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr;
+  gap: 10px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.store-name {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.store-market {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.store-variance {
+  text-align: right;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.store-variance.positive {
+  color: #10b981;
+}
+
+.store-variance.negative {
+  color: #ef4444;
+}
+
+.insight-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.comparison-item {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.comparison-item.weak {
+  background: #fef2f2;
+  border: 2px solid #fecaca;
+}
+
+.comparison-item.strong {
+  background: #f0fdf4;
+  border: 2px solid #bbf7d0;
+}
+
+.comparison-item h5 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.comparison-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.comparison-variance {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.comparison-variance.positive {
+  color: #10b981;
+}
+
+.comparison-variance.negative {
+  color: #ef4444;
+}
+
+.insight-recommendations ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insight-recommendations li {
+  padding: 12px 12px 12px 40px;
+  margin-bottom: 8px;
+  background: #f9fafb;
+  border-radius: 8px;
+  position: relative;
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.insight-recommendations li:before {
+  content: '✓';
+  position: absolute;
+  left: 15px;
+  color: var(--insight-color);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.no-insights {
+  text-align: center;
+  padding: 40px;
+  color: white;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insight-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .store-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .store-variance {
+    text-align: center;
+  }
+}

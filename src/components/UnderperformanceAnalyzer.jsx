@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 import { startOfWeek, subWeeks, format } from 'date-fns';
+import AIInsights from './AIInsights';
 import './UnderperformanceAnalyzer.css';
 
 const UnderperformanceAnalyzer = ({ data }) => {
@@ -129,6 +130,9 @@ const UnderperformanceAnalyzer = ({ data }) => {
 
   return (
     <div className="underperformance-analyzer-container">
+      {/* AI Insights Section */}
+      <AIInsights data={data} />
+
       <div className="analyzer-header">
         <h3>⚠️ Underperformance Analyzer</h3>
         <div className="analyzer-controls">
